@@ -20,7 +20,7 @@ export default function GlobalSearch() {
 
   return (
     <div className="relative">
-      <div className="flex items-center rounded-xl border bg-white px-3">
+      <div className="flex items-center rounded-full border bg-white px-3">
         <Search className="mr-2 h-4 w-4 text-slate-400" />
         <Input
           value={q}

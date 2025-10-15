@@ -1,25 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { Hammer, Store, Shapes } from "lucide-react";
+import * as React from "react";
+import { MdAndroid  } from "react-icons/md"
+import {  ImHammer2  } from "react-icons/im"
+import { IoStorefrontSharp } from "react-icons/io5";
 
-const items = [
-  { href: "/c/electronics", label: "Điện tử", icon: Shapes },
-  { href: "/auctions", label: "Đấu giá", icon: Hammer },
-  { href: "/stores", label: "Cửa hàng", icon: Store },
+export type NavItem = {
+  href: string;
+  label: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
+
+export const NAV_ITEMS: NavItem[] = [
+  { href: "/c/electronics", label: "Điện tử", icon: MdAndroid },
+  { href: "/auctions", label: "Đấu giá", icon: ImHammer2 },
+  { href: "/stores", label: "Cửa hàng", icon: IoStorefrontSharp },
 ];
 
 export default function MainNav() {
   return (
     <nav aria-label="Chính" className="hidden md:block">
-      <ul className="flex items-center gap-2">
-        {items.map(({ href, label, icon: Icon }) => (
+      <ul className="ml-1 flex items-center gap-1">
+        {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
           <li key={href}>
             <Link
               href={href}
-              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm hover:bg-slate-100"
+              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-200 hover:bg-white/10"
             >
-              <Icon className="h-4 w-4" /> {label}
+              <Icon className="h-4 w-4 opacity-90" aria-hidden="true" />
+              <span>{label}</span>
             </Link>
           </li>
         ))}
