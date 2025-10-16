@@ -39,12 +39,12 @@ export default function SearchHero({ defaultQuery = "" }: { defaultQuery?: strin
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Tìm sản phẩm, danh mục hoặc cửa hàng…"
-              className="h-12 w-full border-0 p-0 text-[15px] outline-none"
+              className="h-12 w-full border-0 p-0 text-[15px] outline-none text-black focus-visible:ring-0"
               aria-label="Tìm kiếm"
             />
             <button
               type="submit"
-              className="ml-2 rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
+              className="ml-2 rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
             >
               Tìm
             </button>
@@ -53,13 +53,13 @@ export default function SearchHero({ defaultQuery = "" }: { defaultQuery?: strin
           {suggest.length > 0 && (
             <ul
               role="listbox"
-              className="absolute z-50 mt-2 w-full overflow-hidden rounded-2xl border bg-white shadow-lg"
+              className="absolute z-50 mt-2 w-full overflow-hidden rounded-2xl border bg-white shadow-lg text-black"
             >
               {suggest.slice(0, 8).map((s) => (
                 <li key={s}>
                   <Link
                     href={`/search?q=${encodeURIComponent(s)}`}
-                    className="block px-3 py-2 text-sm hover:bg-slate-50"
+                    className="block px-3 py-2 text-sm hover:bg-slate-50 text-black"
                     role="option"
                   >
                     {s}

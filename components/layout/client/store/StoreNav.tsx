@@ -31,7 +31,7 @@ export default function StoreNav({
               href={urlFor(t.key)}
               className={`block rounded-xl px-4 py-2 text-sm ${
                 active === t.key
-                  ? "bg-amber-500 text-slate-900"
+                  ? "bg-[var(--secondary-color)] text-slate-900"
                   : "bg-white hover:bg-slate-50 border"
               }`}
             >

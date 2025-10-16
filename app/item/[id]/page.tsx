@@ -50,7 +50,7 @@ export default function ItemDetailPage({ params }: { params: { id: string } }) {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8 space-y-6">
+      <main className="container mx-auto px-4 md:px-16 py-8 space-y-6">
         <Breadcrumbs
           items={[
             { href: "/", label: "Trang chủ" },

@@ -56,7 +56,7 @@ export default function StoreHeader({ meta }: { meta: Meta | null }) {
         </div>
 
         <div className="flex gap-3">
-          <Button className="rounded-xl bg-amber-500 text-slate-900 hover:bg-amber-400">
+          <Button className="rounded-xl bg-[var(--secondary-color)] text-slate-900 hover:bg-amber-400">
             Theo dõi
           </Button>
           <Button variant="outline" asChild className="rounded-xl">

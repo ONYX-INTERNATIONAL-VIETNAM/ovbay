@@ -6,6 +6,7 @@ import MainNav, { NAV_ITEMS } from "./MainNav";
 import GlobalSearch from "./GlobalSearch";
 import { ShoppingCart, UserRound, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { IoChatbubbleEllipses } from "react-icons/io5";
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -34,8 +35,8 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="border-b border-white/10 bg-[var(--primary-color)] text-slate-100 backdrop-blur supports-[backdrop-filter]:backdrop-blur">
-        <div className="container mx-auto flex items-center gap-3 px-4 py-2.5">
+      <div className="border-b border-white/10 bg-[var(--primary-color)] text-white backdrop-blur supports-[backdrop-filter]:backdrop-blur">
+        <div className="container mx-auto flex items-center gap-3 px-4 md:px-16 py-2.5">
           {/* LEFT (mobile): hamburger + logo */}
           <div className="flex flex-1 items-center gap-2 md:flex-none">
             <button
@@ -69,10 +70,14 @@ export default function Header() {
           {/* RIGHT: actions */}
           {/* Desktop actions giữ nguyên */}
           <div className="ml-auto hidden items-center gap-2 md:flex">
+            <Link href="/chat" aria-label="Chat" className="flex items-center px-2">
+              <IoChatbubbleEllipses className="mr-2 h-4 w-4" />
+              Chat
+            </Link>
             <Button
               variant="ghost"
               asChild
-              className="rounded-full border border-white/30 bg-transparent px-3 py-1.5 text-sm text-slate-100 hover:bg-[var(--secondary-color)]"
+              className="rounded-full border border-white/30 bg-transparent px-3 py-1.5 text-sm text-white hover:bg-[var(--secondary-color)]"
             >
               <Link href="/auth/sign-in" aria-label="Đăng nhập">
                 <UserRound className="mr-2 h-4 w-4" />
@@ -82,7 +87,7 @@ export default function Header() {
 
             <Button
               asChild
-              className="rounded-full bg-[var(--secondary-color)] px-3 py-1.5 text-sm font-medium text-slate-100 hover:bg-transparent border border-[var(--secondary-color)]  hover:border-white/30"
+              className="rounded-full bg-[var(--secondary-color)] px-3 py-1.5 text-sm font-medium text-white hover:bg-transparent border border-[var(--secondary-color)]  hover:border-white/30"
             >
               <Link href="/cart" aria-label="Giỏ hàng">
                 <ShoppingCart className="mr-2 h-4 w-4" />
@@ -94,6 +99,13 @@ export default function Header() {
           {/* Mobile actions: icon-only để phần phải không trống */}
           <div className="ml-auto flex items-center gap-1 md:hidden">
             <Link
+              href="/chat"
+              aria-label="Đăng nhập"
+              className="relative inline-flex h-9 w-9 items-center justify-center"
+            >
+              <IoChatbubbleEllipses className="h-5 w-5" />
+            </Link>
+            <Link
               href="/auth/sign-in"
               aria-label="Đăng nhập"
               className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 hover:bg-white/10"
@@ -104,7 +116,7 @@ export default function Header() {
             <Link
               href="/cart"
               aria-label="Giỏ hàng"
-              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-slate-900 hover:bg-amber-400"
+              className="relative inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--secondary-color)] text-slate-900 hover:bg-amber-400"
             >
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
@@ -125,9 +137,8 @@ export default function Header() {
       {/* ===== Drawer Mobile ===== */}
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/50 transition-opacity duration-200 md:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={`fixed inset-0 z-[60] bg-black/50 transition-opacity duration-200 md:hidden ${open ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
         aria-hidden={!open}
         onClick={() => setOpen(false)}
       />
@@ -135,9 +146,8 @@ export default function Header() {
       {/* Panel */}
       <aside
         id="mobile-drawer"
-        className={`fixed inset-y-0 left-0 z-[61] w-[84%] max-w-[20rem] transform bg-slate-900 text-slate-100 shadow-2xl transition-transform duration-300 md:hidden ${
-          open ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-y-0 left-0 z-[61] w-[84%] max-w-[20rem] transform bg-[var(--primary-color)] text-white shadow-2xl transition-transform duration-300 md:hidden ${open ? "translate-x-0" : "-translate-x-full"
+          }`}
         role="dialog"
         aria-modal="true"
       >
@@ -174,7 +184,7 @@ export default function Header() {
                 <Link
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 rounded-xl px-3 py-2 text-[15px] text-slate-100 hover:bg-white/10"
+                  className="flex items-center gap-3 rounded-xl px-3 py-2 text-[15px] text-white hover:bg-white/10"
                 >
                   <Icon className="h-5 w-5 opacity-90" aria-hidden="true" />
                   <span>{label}</span>
@@ -198,7 +208,7 @@ export default function Header() {
             <Link
               href="/cart"
               onClick={() => setOpen(false)}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-amber-500 px-3 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[var(--secondary-color)] px-3 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
             >
               <ShoppingCart className="h-4 w-4" />
               <span>Giỏ hàng</span>

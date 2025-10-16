@@ -90,7 +90,7 @@ export default function AuctionsFilters() {
 
       <div className="flex items-center justify-between gap-2">
         <button type="button" onClick={reset} className="rounded-xl border bg-white px-4 py-2 text-sm hover:bg-slate-50">Đặt lại</button>
-        <button type="submit" className="rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400">Áp dụng</button>
+        <button type="submit" className="rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400">Áp dụng</button>
       </div>
     </form>
   );

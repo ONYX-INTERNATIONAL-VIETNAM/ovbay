@@ -38,14 +38,14 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8 space-y-6">
+      <main className="container mx-auto px-4 md:px-16 md:py-8 space-y-6">
         {/* Ô tìm lớn + gợi ý */}
         <SearchHero defaultQuery={q} />
 
         {/* Filter chips theo danh mục */}
         <FilterChips active={cat} />
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="md:flex md:items-center md:justify-between gap-3 space-y-3 md:space-y-0">
           <AdvancedSearch />
           <SortBar total={total} />
         </div>

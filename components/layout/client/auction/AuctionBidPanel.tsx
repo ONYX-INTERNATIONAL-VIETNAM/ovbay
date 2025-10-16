@@ -68,7 +68,7 @@ export default function AuctionBidPanel({
 
         <button
           onClick={submit}
-          className="h-11 rounded-xl bg-amber-500 px-5 text-sm font-medium text-slate-900 hover:bg-amber-400"
+          className="h-11 rounded-xl bg-[var(--secondary-color)] px-5 text-sm font-medium text-slate-900 hover:bg-amber-400"
         >
           Đặt giá
         </button>

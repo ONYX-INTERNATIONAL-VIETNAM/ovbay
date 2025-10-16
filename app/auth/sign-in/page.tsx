@@ -12,20 +12,34 @@ import { Label } from "@/components/ui/label";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-[100svh] grid grid-cols-1 lg:grid-cols-2">
-      {/* Visual */}
+    <div className="min-h-[100svh] grid grid-cols-1 lg:grid-cols-2 bg-[linear-gradient(135deg,#F2F4FF_28%,#92ADFF_100%)] md:bg-none">
+      {/* Visual chỉ hiển thị ở lg+ và đã có gradient riêng */}
       <div className="relative hidden lg:block">
-        <Image
-          src="/images/auth/ovbay-auth-hero.jpg"
-          alt="OVBAY"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
-          <h2 className="text-3xl font-bold tracking-tight">OVBAY</h2>
-          <p className="mt-2 text-white/80">Mua sắm & đấu giá thông minh.</p>
+        <div
+          className="relative h-full w-full overflow-hidden ring-1 ring-black/5 shadow-[0_10px_30px_rgba(17,24,39,0.12)]"
+          style={{ backgroundImage: "linear-gradient(135deg,#F2F4FF 28%,#92ADFF 100%)" }}
+        >
+          <div className="absolute inset-0 grid place-items-center p-10 text-center">
+            <div className="space-y-4">
+              {/* đổi src này sang logo của bạn */}
+              <Image
+                src="/images/logo.png"
+                alt="OVBAY"
+                width={200}
+                height={200}
+                className="mx-auto"
+                priority
+              />
+              <h2 className="text-5xl font-extrabold tracking-tight">
+                <span className="text-[#FFA20A]">OV</span>
+                <span className="text-white">BAY</span>
+              </h2>
+              <p className="text-white/90 text-xl font-extrabold">
+                Mua bán &amp; Đấu giá{" "}
+                <span className="text-[#FFA20A]">chuyên nghiệp</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -49,8 +63,10 @@ export default function LoginPage() {
 
 function LoginForm() {
   const { register, handleSubmit, formState: { errors, isSubmitting } } =
-    useForm<LoginInput>({ resolver: zodResolver(loginSchema),
-      defaultValues: { email: "", password: "", remember: true } });
+    useForm<LoginInput>({
+      resolver: zodResolver(loginSchema),
+      defaultValues: { email: "", password: "", remember: true }
+    });
 
   return (
     <form

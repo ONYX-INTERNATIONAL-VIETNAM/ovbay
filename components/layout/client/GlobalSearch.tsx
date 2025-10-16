@@ -26,7 +26,7 @@ export default function GlobalSearch() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="Tìm sản phẩm, danh mục hoặc cửa hàng…"
-          className="h-10 border-0 p-0 focus-visible:ring-0"
+          className="h-10 border-0 p-0 focus-visible:ring-0 text-black"
           aria-label="Tìm kiếm"
         />
       </div>
@@ -34,7 +34,7 @@ export default function GlobalSearch() {
       {suggest.length > 0 && (
         <ul
           role="listbox"
-          className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl border bg-white shadow-lg"
+          className="absolute z-50 mt-2 w-full overflow-hidden rounded-xl border bg-white shadow-lg text-black"
         >
           {suggest.map((s) => (
             <li key={s}>

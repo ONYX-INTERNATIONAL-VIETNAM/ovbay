@@ -29,7 +29,7 @@ export default function FilterChips({ active }: { active: string }) {
           key={c.key}
           href={urlFor(c.key)}
           className={`rounded-full border px-3 py-1.5 text-sm ${
-            active === c.key ? "bg-amber-500 text-slate-900 border-amber-500" : "bg-white hover:bg-slate-50"
+            active === c.key ? "bg-[var(--secondary-color)] text-slate-900 border-amber-500" : "bg-white hover:bg-slate-50"
           }`}
         >
           {c.label}

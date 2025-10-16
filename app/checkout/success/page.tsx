@@ -32,7 +32,7 @@ export default function CheckoutSuccessPage({ searchParams }: PageProps) {
             <Link href="/orders" className="rounded-xl border bg-white px-4 py-2 text-sm hover:bg-slate-50">
               Xem đơn hàng
             </Link>
-            <Link href="/" className="rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400">
+            <Link href="/" className="rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400">
               Tiếp tục mua sắm
             </Link>
           </div>

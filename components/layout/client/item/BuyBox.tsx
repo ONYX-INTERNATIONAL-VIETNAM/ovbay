@@ -74,7 +74,7 @@ export default function BuyBox({ product, min = 1, max = 10 }: BuyBoxProps) {
       <button
         onClick={handleAdd}
         disabled={product.stock <= 0}
-        className="h-11 rounded-xl bg-amber-500 px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
+        className="h-11 rounded-xl bg-[var(--secondary-color)] px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
       >
         Thêm vào giỏ
       </button>

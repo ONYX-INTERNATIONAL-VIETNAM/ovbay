@@ -17,7 +17,7 @@ export default function SortBar({ total }: { total: number }) {
   };
 
   return (
-    <div className="flex items-center justify-between rounded-2xl border bg-white/70 p-3 backdrop-blur">
+    <div className="flex items-center justify-between rounded-2xl border bg-white/70 px-3 py-2 backdrop-blur w-full md:w-3/4">
       <div className="text-sm text-slate-600">
         <span className="font-medium text-slate-900">{total}</span> kết quả
       </div>

@@ -74,7 +74,7 @@ export default function AdvancedSearch() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="rounded-xl border bg-white px-4 py-2 text-sm hover:bg-slate-50"
+        className="rounded-xl border bg-[var(--secondary-color)] py-3 text-base text-white hover:bg-amber-400 w-full md:w-1/4"
       >
         Tìm kiếm nâng cao
       </button>
@@ -235,7 +235,7 @@ export default function AdvancedSearch() {
                   </button>
                   <button
                     type="submit"
-                    className="rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
+                    className="rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
                   >
                     Áp dụng
                   </button>
