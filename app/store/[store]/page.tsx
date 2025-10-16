@@ -68,7 +68,7 @@ export default function StorePage({ params, searchParams }: PageProps) {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8 space-y-6">
+      <main className="container mx-auto px-4 md:px-16 py-8 space-y-6">
         <StoreHeader meta={meta} />
 
         <div className="grid gap-6 md:grid-cols-[260px_1fr]">
