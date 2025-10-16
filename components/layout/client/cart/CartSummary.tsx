@@ -44,7 +44,7 @@ export default function CartSummary({
         <button
           onClick={() => router.push("/checkout")}
           disabled={subtotal <= 0}
-          className="h-11 rounded-xl bg-amber-500 px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
+          className="h-11 rounded-xl bg-[var(--secondary-color)] px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Thanh toán
         </button>

@@ -20,6 +20,7 @@ type BaseProduct = {
   id: string;
   title: string;
   price: Currency;
+  compareAt?: Currency;
   image: string;
   store: string;
 };
@@ -118,32 +119,39 @@ type Bid = { user: string; amount: number; time: string };
 
 // ====== DATA ======
 export const categories = [
-  { slug: "electronics", name: "Điện tử", cover: "/images/cat-electronics.jpg" },
-  { slug: "fashion", name: "Thời trang", cover: "/images/cat-fashion.jpg" },
-  { slug: "home", name: "Gia dụng", cover: "/images/cat-home.jpg" },
-  { slug: "collectibles", name: "Sưu tầm", cover: "/images/cat-collect.jpg" },
+  { slug: "electronics", name: "Điện tử", cover: "/images/cat-electronics.png" },
+  { slug: "fashion", name: "Thời trang", cover: "/images/cat-fashion.png" },
+  { slug: "home", name: "Gia dụng", cover: "/images/cat-home.png" },
+  { slug: "collectibles", name: "Sưu tầm", cover: "/images/cat-collect.png" },
 ] as const;
 
 export const featuredProducts: FeaturedProduct[] = [
-  { id: "p1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/p1.jpg", store: "SoundX", featured: true },
-  { id: "p2", title: "Bàn phím cơ 75% RGB", price: 1_290_000, image: "/images/p2.jpg", store: "KeyLab" },
-  { id: "p3", title: "Nồi chiên không dầu 5L", price: 990_000, image: "/images/p3.jpg", store: "HomePlus" },
-  { id: "p4", title: "Áo khoác gió nam", price: 490_000, image: "/images/p4.jpg", store: "Fashio" },
-  { id: "p5", title: "Máy ảnh Mirrorless X10", price: 9_990_000, image: "/images/p5.jpg", store: "CamZone" },
+  { id: "p1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/tainghe.png", store: "SoundX", featured: true, compareAt: 1_990_000 },
+  { id: "p2", title: "Nồi chiên không dầu 5L", price: 990_000, image: "/images/noichien.png", store: "HomePlus" },
+  { id: "p3", title: "Máy pha Cafe 3 chức năng", price: 1_290_000, image: "/images/mayphacaphe.png", store: "Máy pha cà phê" },
+  { id: "p4", title: "Áo khoác gió nam", price: 490_000, image: "/images/cat-fashion.png", store: "Fashion" },
+  { id: "p5", title: "Hoodie Active Sportswear", price: 9_990_000, image: "/images/hoodie.png", store: "Áo khoác" },
+  { id: "p6", title: "Máy ảnh Mirrorless X10", price: 9_990_000, image: "/images/may-anh.webp", store: "CamZone" },
+
 ];
 
 export const hotAuctions = [
-  { id: "a1", title: "Lego Starship Limited 2020", current: 3_200_000, image: "/images/a1.jpg", endsIn: "02:14:51" },
-  { id: "a2", title: "Card Pokémon 1st Edition", current: 7_800_000, image: "/images/a2.jpg", endsIn: "00:49:10" },
-  { id: "a3", title: "Đồng hồ vintage 1970s", current: 12_500_000, image: "/images/a3.jpg", endsIn: "05:07:33" },
-  { id: "a4", title: "Máy game NES classic", current: 2_100_000, image: "/images/a4.jpg", endsIn: "01:22:09" },
-  { id: "a5", title: "Giày Jordan 1 Retro", current: 5_600_000, image: "/images/a5.jpg", endsIn: "03:51:27" },
+  { id: "a1", title: "Lego Starship Limited 2020", current: 3_200_000, image: "/images/lego.jpg", endsIn: "02:14:51" },
+  { id: "a2", title: "Card Pokémon 1st Edition", current: 7_800_000, image: "/images/card-pokemon.jpg", endsIn: "00:49:10" },
+  { id: "a3", title: "Đồng hồ vintage 1970s", current: 12_500_000, image: "/images/dong-ho.jpg", endsIn: "05:07:33" },
+  { id: "a4", title: "Máy game NES classic", current: 2_100_000, image: "/images/may-game.jpg", endsIn: "01:22:09" },
+  { id: "a5", title: "Giày Jordan 1 Retro", current: 5_600_000, image: "/images/giay-jordan.webp", endsIn: "03:51:27" },
+  { id: "a6", title: "Giày Jordan 2 Retro", current: 5_600_000, image: "/images/giay-jordan-2.jpg", endsIn: "03:51:27" },
+
 ] as const;
 
 export const featuredStores = [
-  { slug: "soundx", name: "SoundX – Âm thanh cao cấp", banner: "/images/store1.jpg" },
-  { slug: "keylab", name: "KeyLab – Bàn phím & Keycap", banner: "/images/store2.jpg" },
-  { slug: "retrohub", name: "RetroHub – Đồ sưu tầm", banner: "/images/store3.jpg" },
+  { slug: "apple", name: "Apple", banner: "/images/apple.png" },
+  { slug: "android", name: "Android", banner: "/images/android.png" },
+  { slug: "samsung", name: "SAMSUNG", banner: "/images/samsung.png" },
+  { slug: "jbl", name: "JBL", banner: "/images/jbl.png" },
+  { slug: "playstation", name: "PlayStation", banner: "/images/playstation.png" },
+  { slug: "lego", name: "Lego", banner: "/images/lego.png" },
 ] as const;
 
 // ---- CATEGORY META ----
@@ -199,10 +207,10 @@ const ALL_PRODUCTS: Product[] = [
   { id: "e-p-1", title: "Điện thoại Onyx S1 128GB", price: 5_990_000, image: "/images/p1.jpg", store: "SoundX", category: "electronics", sub: "phone" },
   { id: "e-p-2", title: "Điện thoại Onyx S1 256GB", price: 6_990_000, image: "/images/p2.jpg", store: "SoundX", category: "electronics", sub: "phone" },
   // electronics/audio
-  { id: "e-a-1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/p3.jpg", store: "KeyLab", category: "electronics", sub: "audio" },
+  { id: "e-a-1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/tainghe.png", store: "KeyLab", category: "electronics", sub: "audio" },
   { id: "e-a-2", title: "Loa di động Bass+ 30W", price: 1_290_000, image: "/images/p4.jpg", store: "KeyLab", category: "electronics", sub: "audio" },
   // electronics/camera
-  { id: "e-c-1", title: "Máy ảnh Mirrorless X10", price: 9_990_000, image: "/images/p5.jpg", store: "CamZone", category: "electronics", sub: "camera" },
+  { id: "e-c-1", title: "Máy ảnh Mirrorless X10", price: 9_990_000, image: "/images/mayanh.png", store: "CamZone", category: "electronics", sub: "camera" },
   { id: "e-c-2", title: "Ống kính 35mm F1.8", price: 4_590_000, image: "/images/p1.jpg", store: "CamZone", category: "electronics", sub: "camera" },
   // fashion/men
   { id: "f-m-1", title: "Áo khoác gió nam", price: 490_000, image: "/images/p4.jpg", store: "Fashio", category: "fashion", sub: "men" },
@@ -324,7 +332,7 @@ export function getStoreMeta(slug: string): StoreMetaUnion | null {
 
 // ===== PRODUCTS BY STORE =====
 const EXT_PRODUCTS: StoreProduct[] = [
-  { id: "p1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/p1.jpg", store: "SoundX", storeSlug: "soundx", featured: true, sales: 320 },
+  { id: "p1", title: "Tai nghe Bluetooth ANC Pro", price: 1_590_000, image: "/images/tainghe.png", store: "SoundX", storeSlug: "soundx", featured: true, sales: 320 },
   { id: "p2", title: "Bàn phím cơ 75% RGB", price: 1_290_000, image: "/images/p2.jpg", store: "KeyLab", storeSlug: "keylab", featured: true, sales: 280 },
   { id: "p3", title: "Nồi chiên không dầu 5L", price: 990_000, image: "/images/p3.jpg", store: "HomePlus", storeSlug: "homeplus", sales: 410 },
   { id: "p4", title: "Áo khoác gió nam", price: 490_000, image: "/images/p4.jpg", store: "Fashio", storeSlug: "fashio", featured: false, sales: 520 },
@@ -441,6 +449,15 @@ export function searchProducts(q: SearchQuery) {
 
   return { items, total: arr.length, pageSize };
 }
+export type MediaItem =
+  | string
+  | {
+    src: string;
+    type?: "image" | "video";   // nếu không ghi, tự đoán theo đuôi
+    thumb?: string;             // thumbnail cho video
+    poster?: string;            // poster cho video
+    alt?: string;               // alt text (tuỳ chọn)
+  };
 
 // ----- PRODUCT DETAIL MOCK -----
 const PRODUCT_DETAIL_BASE = {
@@ -449,7 +466,7 @@ const PRODUCT_DETAIL_BASE = {
     title: "Tai nghe Bluetooth ANC Pro",
     price: 1_590_000,
     compareAt: 1_990_000,
-    images: ["/images/p1.jpg", "/images/p2.jpg", "/images/p3.jpg"],
+    images: ["/images/p1.webp", "/images/p2.webp", "/images/p3.webp", "https://youtu.be/o1eoCYG7c0c"],
     brand: "Onyx",
     cond: "new" as const,
     sku: "ONX-ANC-PRO-128",
@@ -482,7 +499,103 @@ const PRODUCT_DETAIL_BASE = {
     id: "p2",
     title: "Bàn phím cơ 75% RGB",
     price: 1_290_000,
-    images: ["/images/p2.jpg", "/images/p1.jpg", "/images/p3.jpg"],
+    images: ["/images/p2.webp", "/images/p1.webp", "/images/p3.webp"],
+    brand: "KeyLab",
+    cond: "new" as const,
+    sku: "KLB-75-RGB",
+    stock: 12,
+    category: "electronics" as const,
+    categoryName: "Điện tử",
+    sub: "keyboard",
+    subName: "Bàn phím",
+    store: "KeyLab – Bàn phím & Keycap",
+    storeSlug: "keylab" as const,
+    sellerRating: 4.7,
+    sellerFollowers: 10300,
+    sellerSince: "2020",
+    ship: { free: false, fast: true },
+    returnDays: 7,
+    description: "Layout 75%, hot-swap, plate PC, foam, RGB south-facing.",
+    specs: { "Layout": "75%", "Hot-swap": "Yes", "Switch": "MX-compatible" } as Record<string, string>,
+    reviews: [] as Array<{ user: string; rating: number; comment: string; date: string }>,
+  },
+  p3: {
+    id: "p2",
+    title: "Bàn phím cơ 75% RGB",
+    price: 1_290_000,
+    images: ["/images/p2.webp", "/images/p1.webp", "/images/p3.webp"],
+    brand: "KeyLab",
+    cond: "new" as const,
+    sku: "KLB-75-RGB",
+    stock: 12,
+    category: "electronics" as const,
+    categoryName: "Điện tử",
+    sub: "keyboard",
+    subName: "Bàn phím",
+    store: "KeyLab – Bàn phím & Keycap",
+    storeSlug: "keylab" as const,
+    sellerRating: 4.7,
+    sellerFollowers: 10300,
+    sellerSince: "2020",
+    ship: { free: false, fast: true },
+    returnDays: 7,
+    description: "Layout 75%, hot-swap, plate PC, foam, RGB south-facing.",
+    specs: { "Layout": "75%", "Hot-swap": "Yes", "Switch": "MX-compatible" } as Record<string, string>,
+    reviews: [] as Array<{ user: string; rating: number; comment: string; date: string }>,
+  },
+  p4: {
+    id: "p2",
+    title: "Bàn phím cơ 75% RGB",
+    price: 1_290_000,
+    images: ["/images/p2.webp", "/images/p1.webp", "/images/p3.webp"],
+    brand: "KeyLab",
+    cond: "new" as const,
+    sku: "KLB-75-RGB",
+    stock: 12,
+    category: "electronics" as const,
+    categoryName: "Điện tử",
+    sub: "keyboard",
+    subName: "Bàn phím",
+    store: "KeyLab – Bàn phím & Keycap",
+    storeSlug: "keylab" as const,
+    sellerRating: 4.7,
+    sellerFollowers: 10300,
+    sellerSince: "2020",
+    ship: { free: false, fast: true },
+    returnDays: 7,
+    description: "Layout 75%, hot-swap, plate PC, foam, RGB south-facing.",
+    specs: { "Layout": "75%", "Hot-swap": "Yes", "Switch": "MX-compatible" } as Record<string, string>,
+    reviews: [] as Array<{ user: string; rating: number; comment: string; date: string }>,
+  },
+  p5: {
+    id: "p2",
+    title: "Bàn phím cơ 75% RGB",
+    price: 1_290_000,
+    images: ["/images/p2.webp", "/images/p1.webp", "/images/p3.webp"],
+    brand: "KeyLab",
+    cond: "new" as const,
+    sku: "KLB-75-RGB",
+    stock: 12,
+    category: "electronics" as const,
+    categoryName: "Điện tử",
+    sub: "keyboard",
+    subName: "Bàn phím",
+    store: "KeyLab – Bàn phím & Keycap",
+    storeSlug: "keylab" as const,
+    sellerRating: 4.7,
+    sellerFollowers: 10300,
+    sellerSince: "2020",
+    ship: { free: false, fast: true },
+    returnDays: 7,
+    description: "Layout 75%, hot-swap, plate PC, foam, RGB south-facing.",
+    specs: { "Layout": "75%", "Hot-swap": "Yes", "Switch": "MX-compatible" } as Record<string, string>,
+    reviews: [] as Array<{ user: string; rating: number; comment: string; date: string }>,
+  },
+  p6: {
+    id: "p2",
+    title: "Bàn phím cơ 75% RGB",
+    price: 1_290_000,
+    images: ["/images/p2.webp", "/images/p1.webp", "/images/p3.webp"],
     brand: "KeyLab",
     cond: "new" as const,
     sku: "KLB-75-RGB",
@@ -518,7 +631,7 @@ const AUCTION_DETAIL_BASE: Record<string, AuctionDetail> = {
   a1: {
     id: "a1",
     title: "Lego Starship Limited 2020",
-    images: ["/images/a1.jpg", "/images/a2.jpg", "/images/a3.jpg"],
+    images: ["/images/a1.webp", "/images/a2.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
     cond: "used",
     sku: "LEGO-STAR-2020",
     startPrice: 1_500_000,
@@ -539,7 +652,87 @@ const AUCTION_DETAIL_BASE: Record<string, AuctionDetail> = {
   a2: {
     id: "a2",
     title: "Card Pokémon 1st Edition",
-    images: ["/images/a2.jpg", "/images/a1.jpg", "/images/a3.jpg"],
+    images: ["/images/a2.webp", "/images/a1.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
+    cond: "used",
+    startPrice: 2_000_000,
+    current: 7_800_000,
+    increment: 100_000,
+    buyNow: 9_500_000,
+    endsAt: new Date(Date.now() + 1000 * 60 * 49).toISOString(), // +49m
+    ship: { free: false, fast: true },
+    returnDays: 0,
+    description: "Thẻ Pokémon 1st Edition, giữ gìn kỹ, có sleeve.",
+    specs: { "Series": "Base Set", "Tình trạng": "Near Mint" },
+    store: "RetroHub – Đồ sưu tầm",
+    storeSlug: "retrohub",
+    sellerRating: 4.9,
+    sellerFollowers: 8700,
+    sellerSince: "2019",
+  },
+  a3: {
+    id: "a2",
+    title: "Card Pokémon 1st Edition",
+    images: ["/images/a2.webp", "/images/a1.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
+    cond: "used",
+    startPrice: 2_000_000,
+    current: 7_800_000,
+    increment: 100_000,
+    buyNow: 9_500_000,
+    endsAt: new Date(Date.now() + 1000 * 60 * 49).toISOString(), // +49m
+    ship: { free: false, fast: true },
+    returnDays: 0,
+    description: "Thẻ Pokémon 1st Edition, giữ gìn kỹ, có sleeve.",
+    specs: { "Series": "Base Set", "Tình trạng": "Near Mint" },
+    store: "RetroHub – Đồ sưu tầm",
+    storeSlug: "retrohub",
+    sellerRating: 4.9,
+    sellerFollowers: 8700,
+    sellerSince: "2019",
+  },
+  a4: {
+    id: "a2",
+    title: "Card Pokémon 1st Edition",
+    images: ["/images/a2.webp", "/images/a1.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
+    cond: "used",
+    startPrice: 2_000_000,
+    current: 7_800_000,
+    increment: 100_000,
+    buyNow: 9_500_000,
+    endsAt: new Date(Date.now() + 1000 * 60 * 49).toISOString(), // +49m
+    ship: { free: false, fast: true },
+    returnDays: 0,
+    description: "Thẻ Pokémon 1st Edition, giữ gìn kỹ, có sleeve.",
+    specs: { "Series": "Base Set", "Tình trạng": "Near Mint" },
+    store: "RetroHub – Đồ sưu tầm",
+    storeSlug: "retrohub",
+    sellerRating: 4.9,
+    sellerFollowers: 8700,
+    sellerSince: "2019",
+  },
+  a5: {
+    id: "a2",
+    title: "Card Pokémon 1st Edition",
+    images: ["/images/a2.webp", "/images/a1.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
+    cond: "used",
+    startPrice: 2_000_000,
+    current: 7_800_000,
+    increment: 100_000,
+    buyNow: 9_500_000,
+    endsAt: new Date(Date.now() + 1000 * 60 * 49).toISOString(), // +49m
+    ship: { free: false, fast: true },
+    returnDays: 0,
+    description: "Thẻ Pokémon 1st Edition, giữ gìn kỹ, có sleeve.",
+    specs: { "Series": "Base Set", "Tình trạng": "Near Mint" },
+    store: "RetroHub – Đồ sưu tầm",
+    storeSlug: "retrohub",
+    sellerRating: 4.9,
+    sellerFollowers: 8700,
+    sellerSince: "2019",
+  },
+  a6: {
+    id: "a2",
+    title: "Card Pokémon 1st Edition",
+    images: ["/images/a2.webp", "/images/a1.webp", "/images/a3.webp", "https://youtu.be/o1eoCYG7c0c"],
     cond: "used",
     startPrice: 2_000_000,
     current: 7_800_000,

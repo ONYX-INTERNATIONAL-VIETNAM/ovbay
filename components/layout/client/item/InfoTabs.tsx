@@ -31,7 +31,7 @@ export default function InfoTabs({
             onClick={() => setTab(t.k)}
             className={`rounded-xl border px-4 py-2 text-sm ${
               tab === t.k
-                ? "bg-amber-500 text-slate-900 border-amber-500"
+                ? "bg-[var(--secondary-color)] text-slate-900 border-amber-500"
                 : "bg-white hover:bg-slate-50"
             }`}
             type="button"

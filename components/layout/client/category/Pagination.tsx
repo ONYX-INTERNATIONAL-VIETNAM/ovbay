@@ -45,7 +45,7 @@ export default function Pagination({
           <li key={p}>
             <Link
               href={urlFor(p)}
-              className={`rounded-xl border px-3 py-1.5 text-sm ${p === page ? "bg-amber-500 text-slate-900 border-amber-500" : "bg-white hover:bg-slate-50"}`}
+              className={`rounded-xl border px-3 py-1.5 text-sm ${p === page ? "bg-[var(--secondary-color)] text-slate-900 border-amber-500" : "bg-white hover:bg-slate-50"}`}
             >
               {p}
             </Link>

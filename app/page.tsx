@@ -26,46 +26,52 @@ export default function HomePage() {
     <>
       <Header />
 
-      <main className="space-y-14 pb-12">
+      <main className="pb-12">
         {/* hero trên nền gradient + glass */}
         <Hero />
 
-        {/* dải brand trust nhỏ */}
-        <section className="container">
-          <div className="grid grid-cols-2 gap-3 rounded-2xl border bg-white/70 p-4 text-xs text-slate-500 backdrop-blur md:grid-cols-4">
-            <div className="rounded-xl bg-white px-3 py-2 shadow-sm">Giao dịch an toàn</div>
-            <div className="rounded-xl bg-white px-3 py-2 shadow-sm">Hoàn tiền khi có vấn đề</div>
-            <div className="rounded-xl bg-white px-3 py-2 shadow-sm">Vận chuyển toàn quốc</div>
-            <div className="rounded-xl bg-white px-3 py-2 shadow-sm">Hỗ trợ 24/7</div>
-          </div>
-        </section>
 
-        {/* danh mục */}
-        <section className="container">
-          <CategoryGrid items={catItems} />
-        </section>
+        <div className="mx-6 md:mx-16 space-y-14">
+          {/* danh mục */}
+          <section className="container my-10">
+            <hr className="bg-[#2E353F] border-none h-[1px]" />
+            <CategoryGrid items={catItems} />
+          </section>
 
-        {/* sản phẩm nổi bật */}
-        <section className="bg-[linear-gradient(180deg,rgba(255,255,255,0),#fafafa_40%,#fff)] py-12">
-          <div className="container space-y-8">
-            <ProductRail title="Sản phẩm nổi bật" items={productItems} />
-          </div>
-        </section>
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
 
-        {/* đấu giá hot */}
-        <section className="container">
-          <AuctionRail title="Đấu giá đang hot" items={auctionItems} />
-        </section>
+          {/* sản phẩm nổi bật */}
+          <section className="bg-[linear-gradient(180deg,rgba(255,255,255,0),#fafafa_40%,#fff)]">
+            <div className="container space-y-8">
+              <ProductRail title="Sản phẩm nổi bật" items={productItems} />
+            </div>
+          </section>
 
-        {/* cửa hàng tiêu biểu */}
-        <section className="container">
-          <StoreShowcase stores={storeItems} />
-        </section>
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
 
-        {/* newsletter */}
-        <section className="container">
-          <Newsletter />
-        </section>
+          {/* đấu giá hot */}
+          <section className="container">
+            <AuctionRail title="Đấu giá đang hot" items={auctionItems} />
+          </section>
+
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
+
+          {/* cửa hàng tiêu biểu */}
+          <section className="container">
+            <StoreShowcase stores={storeItems} />
+          </section>
+
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
+
+          {/* newsletter */}
+          <section className="container">
+            <Newsletter />
+          </section>
+
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
+
+        </div>
+
       </main>
 
       <Footer />

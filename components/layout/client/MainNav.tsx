@@ -26,7 +26,7 @@ export default function MainNav() {
           <li key={href}>
             <Link
               href={href}
-              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-200 hover:bg-white/10"
+              className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-white hover:bg-white/10"
             >
               <Icon className="h-4 w-4 opacity-90" aria-hidden="true" />
               <span>{label}</span>

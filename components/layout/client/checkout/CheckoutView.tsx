@@ -189,7 +189,7 @@ export default function CheckoutView({
         <button
           onClick={placeOrder}
           disabled={submitting || cart.items.length === 0}
-          className="mt-4 h-11 w-full rounded-xl bg-amber-500 px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-4 h-11 w-full rounded-xl bg-[var(--secondary-color)] px-5 text-sm font-medium text-slate-900 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {submitting
             ? "Đang xử lý…"
