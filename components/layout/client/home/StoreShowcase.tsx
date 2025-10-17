@@ -1,19 +1,29 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function StoreShowcase({
   stores,
+  initialCount = 6, // số item hiển thị ban đầu
 }: {
   stores: { slug: string; name: string; banner: string }[];
+  initialCount?: number;
 }) {
+  const [showAll, setShowAll] = React.useState(false);
+
+  const visible = showAll ? stores : stores.slice(0, initialCount);
+  const canExpand = stores.length > initialCount;
+
   return (
     <section className="space-y-5">
-      <h2 className="md:my-6 text-center font-bold text-[#2E353F] my-8 text-2xl md:text-3xl">
-        Cửa hàng tiêu biểu
-      </h2>
-
-      <ul className="mt-6 grid place-items-center gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
-        {stores.map((s) => (
+      <ul
+        id="store-showcase-grid"
+        className="mt-6 grid place-items-center gap-4 sm:gap-6 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+      >
+        {visible.map((s) => (
           <li key={s.slug} className="flex flex-col items-center">
             <Link
               href={`/store/${s.slug}`}
@@ -46,6 +56,20 @@ export default function StoreShowcase({
           </li>
         ))}
       </ul>
+
+      {canExpand && (
+        <div className="flex justify-center mt-9">
+          <Button
+            variant="outline"
+            aria-controls="store-showcase-grid"
+            aria-expanded={showAll}
+            onClick={() => setShowAll((v) => !v)}
+            className="inline-flex items-center gap-2 rounded-full border border-black"
+          >
+            {showAll ? "Thu gọn" : "Xem tất cả"}
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

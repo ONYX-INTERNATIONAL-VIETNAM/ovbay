@@ -15,7 +15,7 @@ export default function StoresIndexPage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8 space-y-8">
+      <main className="container mx-auto px-4 md:px-16 py-8 space-y-8">
         <section className="rounded-2xl border bg-white/70 p-5 backdrop-blur">
           <h1 className="text-2xl font-bold tracking-tight">Cửa hàng</h1>
           <p className="mt-1 text-sm text-slate-600">

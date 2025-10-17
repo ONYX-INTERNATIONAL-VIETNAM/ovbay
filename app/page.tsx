@@ -13,7 +13,9 @@ import {
   hotAuctions,
   categories,
   featuredStores,
+  VIDEOS,
 } from "@/lib/data";
+import VideoRail from "@/components/layout/client/home/VideoRail";
 
 export default function HomePage() {
   // 🔧 Clone để chuyển từ readonly → mutable cho props các component cũ
@@ -56,8 +58,18 @@ export default function HomePage() {
 
           <hr className="bg-[#2E353F] border-none h-[1px]" />
 
+          {/* đấu giá hot */}
+          <section className="container">
+            <VideoRail title="Video nổi bật" items={VIDEOS} />
+          </section>
+
+          <hr className="bg-[#2E353F] border-none h-[1px]" />
+
           {/* cửa hàng tiêu biểu */}
           <section className="container">
+            <h2 className="md:my-6 text-center font-bold text-[#2E353F] my-8 text-2xl md:text-3xl">
+              Cửa hàng tiêu biểu
+            </h2>
             <StoreShowcase stores={storeItems} />
           </section>
 
