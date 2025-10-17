@@ -1,3 +1,4 @@
+import * as React from "react";
 
 import Header from "@/components/layout/client/Header";
 import Footer from "@/components/layout/client/Footer";
@@ -13,19 +14,6 @@ import { getProductsByCategory, getCategoryMeta } from "@/lib/data";
 // ---- URL types ----
 type UrlSortKey = "popular" | "newest" | "price-asc" | "price-desc";
 
-type PageProps = {
-  params: { category: string }; // /c/[category]
-  searchParams?: {
-    sort?: UrlSortKey | string;
-    page?: string; // từ URL luôn là string
-    q?: string;
-    min?: string;
-    max?: string;
-    [key: string]: string | string[] | undefined;
-  };
-};
-
-// ---- Helpers ----
 const CATEGORY_SLUGS = ["electronics", "fashion", "home", "collectibles"] as const;
 type CategorySlug = (typeof CATEGORY_SLUGS)[number];
 
@@ -49,12 +37,31 @@ function mapSort(v?: UrlSortKey | string) {
   }
 }
 
-export default function CategoryPage({ params, searchParams }: PageProps) {
-  const { category } = params;
+type PageParams = Promise<{ category: string }>;
+type PageSearchParams = Promise<{
+  sort?: UrlSortKey | string;
+  page?: string;
+  q?: string;
+  min?: string;
+  max?: string;
+  [key: string]: string | string[] | undefined;
+}>;
 
-  const sort = mapSort(searchParams?.sort);
-  const pageStr = searchParams?.page ?? "1";
-  const page = Number.isFinite(Number(pageStr)) && Number(pageStr) > 0 ? Number(pageStr) : 1;
+export default function CategoryPage({
+  params,
+  searchParams,
+}: {
+  params: PageParams;
+  searchParams: PageSearchParams;
+}) {
+  // ✅ unwrap Promise bằng React.use()
+  const { category } = React.use(params);
+  const sp = React.use(searchParams) ?? {};
+
+  const sort = mapSort(sp.sort);
+  const pageStr = sp.page ?? "1";
+  const pageNum = Number(pageStr);
+  const page = Number.isFinite(pageNum) && pageNum > 0 ? pageNum : 1;
 
   const meta = getCategoryMeta(category);
 

@@ -255,8 +255,8 @@ const STORE_META = {
   soundx: {
     slug: "soundx",
     name: "SoundX – Âm thanh cao cấp",
-    banner: "/images/store1.jpg",
-    avatar: "/images/store1.jpg",
+    banner: "/images/banner.jpg",
+    avatar: "/images/sound.png",
     rating: 4.8,
     reviews: 1280,
     followers: 15200,
@@ -373,12 +373,17 @@ export function getProductsByStore(q: StoreQuery) {
 }
 
 export const allStores: Array<Pick<StoreMeta, "slug" | "name" | "banner">> = [
-  { slug: "soundx", name: "SoundX – Âm thanh cao cấp", banner: "/images/store1.jpg" },
+  { slug: "soundx", name: "SoundX – Âm thanh cao cấp", banner: "/images/sound.png" },
   { slug: "keylab", name: "KeyLab – Bàn phím & Keycap", banner: "/images/store2.jpg" },
   { slug: "retrohub", name: "RetroHub – Đồ sưu tầm", banner: "/images/store3.jpg" },
-  { slug: "camzone", name: "CamZone – Máy ảnh & Lens", banner: "/images/p5.jpg" },
+  { slug: "camzone", name: "CamZone – Máy ảnh & Lens", banner: "/images/p5.png" },
   { slug: "homeplus", name: "HomePlus – Gia dụng", banner: "/images/p3.jpg" },
-  { slug: "fashio", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+  { slug: "1", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+  { slug: "2", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+  { slug: "3", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+  { slug: "4", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+  { slug: "5", name: "Fashio – Thời trang", banner: "/images/p4.jpg" },
+
 ];
 
 export function getAllStores() {
@@ -834,3 +839,26 @@ export function searchAuctions(q: AuctionsQuery) {
   const items = arr.slice(start, start + pageSize);
   return { items, total: arr.length, pageSize };
 }
+
+export type VideoItem = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  views: number;
+  live?: boolean;
+  highlighted?: boolean;
+};
+
+export const VIDEOS: VideoItem[] = [
+  { id: "v1", title: "SoundX - Âm thanh", thumbnail: "/img/ipad.png", views: 12700, live: true },
+  { id: "v2", title: "Máy pha cà phê", thumbnail: "/img/coffee.png", views: 12700 },
+  { id: "v3", title: "Loa để bàn", thumbnail: "/img/speaker.png", views: 12700 },
+  { id: "v4", title: "Áo hoodie", thumbnail: "/img/hoodie.png", views: 12700, live: true },
+  { id: "v5", title: "SoundX - Âm thanh", thumbnail: "/img/ipad.png", views: 12700 },
+];
+
+export type Conv = { id: string; name: string; avatar: string; last: string; dateLabel: string };
+
+export type TextMsg = { id: string; from: "me" | "shop"; type: "text"; text: string; ts: number };
+export type CardMsg = { id: string; from: "shop"; type: "card"; ts: number; title: string; image: string; subtitle: string; price: string; cta: string };
+export type Msg = TextMsg | CardMsg;
