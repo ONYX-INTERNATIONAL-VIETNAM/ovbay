@@ -43,7 +43,7 @@ export default function CartView() {
         <p className="mt-2">Tiếp tục mua sắm và thêm sản phẩm bạn yêu thích.</p>
         <Link
           href="/"
-          className="mt-4 inline-block rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"
+          className="mt-4 text-white inline-block rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium hover:bg-amber-400"
         >
           Về trang chủ
         </Link>

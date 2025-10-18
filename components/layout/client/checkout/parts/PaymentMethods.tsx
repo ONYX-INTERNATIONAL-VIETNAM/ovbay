@@ -45,7 +45,7 @@ export default function PaymentMethods({
             key={m.k}
             onClick={() => set("method", m.k as PaymentValues["method"])}
             className={`rounded-xl border px-4 py-2 text-sm ${
-              value.method === m.k ? "bg-[var(--secondary-color)] text-slate-900 border-amber-500" : "bg-white hover:bg-slate-50"
+              value.method === m.k ? "bg-[var(--secondary-color)] text-white  border-amber-500" : "bg-white text-slate-700 hover:bg-slate-50"
             }`}
             type="button"
           >
