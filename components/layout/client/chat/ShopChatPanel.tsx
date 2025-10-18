@@ -19,7 +19,7 @@ function TypingDots() {
   );
 }
 
-export default function ShopeeChatPanel({
+export default function ShopChatPanel({
   open, max, setMax, onClose,
   convs, active, setActive,
   msgs, typingFor, online,
@@ -82,7 +82,7 @@ export default function ShopeeChatPanel({
       ].join(" ")}
     >
       {/* thanh đỏ trên */}
-      <div className="h-2 w-full flex-none bg-[#e40000]" />
+      <div className="h-2 w-full flex-none bg-[var(--secondary-color)]" />
 
       {/* Header */}
       <div className="flex flex-none items-center justify-between border-b px-3 py-2">

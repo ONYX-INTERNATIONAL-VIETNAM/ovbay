@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ChatButton from "../chat/ChatButton";
 
 export default function SellerCard({
   seller,
@@ -21,12 +22,13 @@ export default function SellerCard({
         </div>
 
         <div className="flex gap-3">
-          <Link
-            href={`/messages/new?to=${seller.slug}`}
-            className="rounded-xl border bg-white px-4 py-2 text-sm hover:bg-slate-50"
+          <ChatButton
+            to={seller.slug}
+            variant="outline"                 // props của shadcn Button (tùy bạn)
+            className="rounded-xl bg-white px-4 py-2 text-sm hover:bg-slate-50"
           >
             Nhắn tin
-          </Link>
+          </ChatButton>
           <Link
             href={`/store/${seller.slug}`}
             className="rounded-xl bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-slate-900 hover:bg-amber-400"

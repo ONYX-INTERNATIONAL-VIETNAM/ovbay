@@ -1,53 +1,67 @@
 "use client";
+import * as React from "react";
 import { MessageSquare } from "lucide-react";
 
+type Side = "left" | "right";
+
 export default function DockButton({
-    onOpen,
-    unreadCount = 0,
-    side = "right",            // "left" | "right"
-    bottom = 16,               // px offset từ đáy
-  }: {
-    onOpen: () => void;
-    unreadCount?: number;
-    side?: "left" | "right";
-    bottom?: number;
-  }) {
-    const hasUnread = unreadCount > 0;
-  
-    const sideClass =
-      side === "left"
-        ? "left-[env(safe-area-inset-left,1rem)] rounded-r-xl"
-        : "right-[env(safe-area-inset-right,1rem)] rounded-l-xl";
-  
-    const badgeSideClass = side === "left" ? "-right-2" : "-left-2";
-  
-    return (
-      <button
-        type="button"
-        onClick={onOpen}
-        aria-label="Mở chat"
-        className={[
-          "fixed",
-          sideClass,
-          `bottom-[calc(env(safe-area-inset-bottom,0px)+${bottom}px)] md:bottom-6 z-[100]`,
-          "relative flex items-center gap-2 px-3 py-2",
-          "bg-[#ff5722] text-white shadow-[0_8px_30px_rgba(0,0,0,.18)]",
-          "hover:brightness-110 active:scale-[0.99] transition",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#ff5722]",
-        ].join(" ")}
-      >
-        {hasUnread && (
-          <span
-            className={`absolute -top-2 ${badgeSideClass} grid h-5 min-w-[20px] place-items-center rounded-full bg-red-500 px-1 text-[10px] font-bold`}
-            style={{ lineHeight: 1 }}
-          >
-            {unreadCount}
-          </span>
-        )}
-        <span className="grid h-7 w-7 place-items-center rounded-md bg-white/15">
-          <MessageSquare className="h-4 w-4" />
+  onOpen,
+  unreadCount = 0,
+  side = "right",      // Shopee: góc phải
+  bottom = 16,         // px offset từ đáy
+  x = 16,              // px offset từ mép
+  label = "Chat",
+}: {
+  onOpen: () => void;
+  unreadCount?: number;
+  side?: Side;
+  bottom?: number;
+  x?: number;
+  label?: string;
+}) {
+  const hasUnread = unreadCount > 0;
+
+  const posStyle: React.CSSProperties =
+    side === "left"
+      ? {
+          left: `calc(env(safe-area-inset-left, 0px) + ${x}px)`,
+          bottom: `calc(env(safe-area-inset-bottom, 0px) + ${bottom}px)`,
+        }
+      : {
+          right: `calc(env(safe-area-inset-right, 0px) + ${x}px)`,
+          bottom: `calc(env(safe-area-inset-bottom, 0px) + ${bottom}px)`,
+        };
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={label}
+      style={posStyle}
+      className={[
+        "fixed z-[100] pointer-events-auto",
+        // Hình dạng & màu giống Shopee
+        "inline-flex items-center gap-1.5 rounded-full px-3.5 py-2",
+        "bg-[#ee4d2d] text-white shadow-[0_10px_30px_rgba(0,0,0,0.18)]",
+        "hover:brightness-110 active:scale-[0.99] transition",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#ee4d2d]",
+      ].join(" ")}
+    >
+      {/* badge unread */}
+      {hasUnread && (
+        <span
+          className="absolute -top-2 -right-2 grid h-5 min-w-[20px] place-items-center rounded-full bg-red-500 px-1 text-[10px] font-bold"
+          style={{ lineHeight: 1 }}
+          aria-live="polite"
+        >
+          {unreadCount > 99 ? "99+" : unreadCount}
         </span>
-        <span className="pr-1 text-[15px] font-semibold">Chat</span>
-      </button>
-    );
-  }
+      )}
+
+      <span className="grid h-6 w-6 place-items-center rounded-full bg-white/15">
+        <MessageSquare className="h-4 w-4" />
+      </span>
+      <span className="text-[14px] font-semibold">{label}</span>
+    </button>
+  );
+}

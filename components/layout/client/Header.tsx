@@ -6,7 +6,6 @@ import MainNav, { NAV_ITEMS } from "./MainNav";
 import GlobalSearch from "./GlobalSearch";
 import { ShoppingCart, UserRound, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IoChatbubbleEllipses } from "react-icons/io5";
 
 export default function Header() {
   const [open, setOpen] = React.useState(false);
@@ -70,10 +69,6 @@ export default function Header() {
           {/* RIGHT: actions */}
           {/* Desktop actions giữ nguyên */}
           <div className="ml-auto hidden items-center gap-2 md:flex">
-            <Link href="/chat" aria-label="Chat" className="flex items-center px-2">
-              <IoChatbubbleEllipses className="mr-2 h-4 w-4" />
-              Chat
-            </Link>
             <Button
               variant="ghost"
               asChild
@@ -98,13 +93,6 @@ export default function Header() {
 
           {/* Mobile actions: icon-only để phần phải không trống */}
           <div className="ml-auto flex items-center gap-1 md:hidden">
-            <Link
-              href="/chat"
-              aria-label="Đăng nhập"
-              className="relative inline-flex h-9 w-9 items-center justify-center"
-            >
-              <IoChatbubbleEllipses className="h-5 w-5" />
-            </Link>
             <Link
               href="/auth/sign-in"
               aria-label="Đăng nhập"
